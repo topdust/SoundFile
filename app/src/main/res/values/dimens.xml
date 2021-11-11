@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="cardview_filesystem_item_file_filename_size">18sp</dimen>
+</resources>

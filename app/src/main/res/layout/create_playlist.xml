@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="5dp"
+
+    android:background="@color/MyAppTheme_colorPrimaryDark">
+
+
+    <TextView
+        android:id="@+id/create_playlist_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark"
+
+        android:contentDescription="@string/app_name"
+        android:fontFamily="sans-serif"
+        android:padding="5dp"
+        android:scaleType="center"
+        android:text="@string/create_playlist_playlist_title"
+        android:textAlignment="center"
+
+        android:textAllCaps="true"
+        android:textColor="@color/MyAppTheme_colorAccent"
+
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/create_playlist_inp_playlist_name_ET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:autoSizeTextType="uniform"
+
+        android:background="@color/MyAppTheme_colorPrimary"
+        android:hint="@string/create_playlist_playlist_name_hint"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/MyAppTheme_colorAccent"
+        android:textColorHint="@color/MyAppTheme_colorAccent50transparent"
+
+        android:textSize="18sp"
+
+        app:layout_constraintHorizontal_weight="5"
+
+        app:layout_constraintEnd_toStartOf="@+id/create_playlist_clr_inp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_playlist_title"
+        android:importantForAutofill="no" />
+
+
+    <ImageButton
+        android:id="@+id/create_playlist_clr_inp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintHorizontal_weight="1"
+
+
+        android:background="@color/MyAppTheme_colorPrimary"
+        android:src="@drawable/ic_cancel"
+
+        android:textColor="@color/MyAppTheme_colorAccent"
+
+        android:textSize="18sp"
+
+        style="?android:attr/borderlessButtonStyle"
+
+        app:layout_constraintBottom_toBottomOf="@+id/create_playlist_inp_playlist_name_ET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/create_playlist_inp_playlist_name_ET"
+        app:layout_constraintTop_toTopOf="@+id/create_playlist_inp_playlist_name_ET" />
+
+
+    <Button
+        android:id="@+id/create_playlist_cancel_BTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:background="@color/MyAppTheme_colorPrimary"
+        android:text="Cancel"
+        android:textColor="@color/MyAppTheme_colorAccent"
+        android:textSize="18sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_playlist_inp_playlist_name_ET" />
+
+
+    <Button
+        android:id="@+id/create_playlist_create_BTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:background="@color/MyAppTheme_colorPrimary"
+        android:text="Create"
+        android:textColor="@color/MyAppTheme_colorAccent"
+        android:textSize="18sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_playlist_inp_playlist_name_ET" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

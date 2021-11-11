@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="MyAppTheme_colorPrimaryLight">#FFc7add9</color>
+    <color name="MyAppTheme_colorPrimary">#ff6c578c</color>
+    <color name="MyAppTheme_colorPrimary50transparent">#886c578c</color>
+    <color name="MyAppTheme_colorPrimaryDark">#ff463d5c</color>
+    <color name="MyAppTheme_colorPrimaryDark50transparent">#88463d5c</color>
+    <color name="MyAppTheme_colorPrimaryDark75transparent">#cc463d5c</color>
+    <color name="MyAppTheme_colorPrimaryDark85transparent">#ed463d5c</color>
+
+    <color name="MyAppTheme_colorAccent">#FFa1f0f0</color>
+    <color name="MyAppTheme_colorAccent50transparent">#88a1f0f0</color>
+    <color name="MyAppTheme_colorAccent90transparent">#eea1f0f0</color>
+    <color name="MyAppTheme_colorButton">#FFa1f0f0</color>
+
+    <color name="playlist_item_back_color">#ff6c578c</color>
+    <color name="playlist_item_back_color_active">#ff9f85c7</color>
+
+    <color name="player_search_item_back_color">#ff463d5c</color>
+    <color name="player_search_item_back_color_active">#ff756fa6</color>
+
+    <color name="MyAppTheme_colorCardView_artist">#ffdddaeb</color>
+    <color name="MyAppTheme_colorCardView_title">#FFa1f0f0</color>
+    <color name="MyAppTheme_colorCardView_duration">#ffdddaeb</color>
+
+    <color name="Player_background_color_start">#ff2f2d45</color>
+    <color name="Player_background_color_end">#ff081c26</color>
+
+</resources>

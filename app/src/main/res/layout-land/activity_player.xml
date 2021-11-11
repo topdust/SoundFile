@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/audioplayer_rootview_constr_lay"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="afterDescendants"
+
+    android:background="@drawable/main_activity_background"
+    tools:context=".PlayerActivity">
+
+
+
+    <!-- Search -->
+
+
+    <!-- Search settings -->
+    <AutoCompleteTextView
+        android:id="@+id/audioplayer_TB_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:autoSizeTextType="none"
+
+        android:background="@color/MyAppTheme_colorPrimary50transparent"
+
+        android:completionThreshold="1"
+        android:contextClickable="true"
+        android:dropDownAnchor="@id/audioplayer_TB_search"
+        android:hint="Search"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:textColor="@color/MyAppTheme_colorAccent"
+
+        android:textColorHint="@color/MyAppTheme_colorPrimary50transparent"
+
+
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:theme="@style/Autocomplete"
+        app:layout_constraintBottom_toTopOf="@+id/title_artist_layout"
+        app:layout_constraintEnd_toStartOf="@+id/player_IB_search_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/player_IB_search_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/MyAppTheme_colorPrimaryDark"
+        android:backgroundTintMode="src_over"
+        app:layout_constraintBottom_toBottomOf="@+id/audioplayer_TB_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/audioplayer_TB_search"
+        app:layout_constraintTop_toTopOf="@+id/audioplayer_TB_search"
+        app:srcCompat="@drawable/ic_playlist_search_settings" />
+
+
+    <LinearLayout
+        android:id="@+id/title_artist_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_IB_search_settings">
+
+
+        <!-- Artist -->
+        <TextView
+            android:id="@+id/Player_TV_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+
+            android:layout_weight="2"
+
+            android:autoSizeTextType="none"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:scrollbars="vertical"
+
+            android:singleLine="true"
+            android:text="Artist"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+            android:textSize="16sp" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/Player_TV_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:autoSizeTextType="none"
+
+            android:elegantTextHeight="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+
+            android:focusableInTouchMode="true"
+            android:focusedByDefault="true"
+            android:freezesText="false"
+
+            android:gravity="center_horizontal"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Title"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/MyAppTheme_colorPrimaryDark"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/Player_TV_artist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Player_TV_artist"
+            app:layout_constraintTop_toTopOf="@+id/Player_TV_artist" />
+
+    </LinearLayout>
+
+
+
+    <!-- Duration -->
+    <SeekBar
+        android:id="@+id/SB_duration"
+        style="@android:style/Widget.Material.Light.SeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:thumb="@drawable/seekbar_thumb_style"
+        app:layout_constraintBottom_toTopOf="@+id/Player_TV_current_position"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Player_TV_time_shift_pos" />
+
+    <TextView
+        android:id="@+id/Player_TV_current_position"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="8dp"
+        android:autoSizeTextType="none"
+        android:gravity="center_vertical|left"
+        android:text="0:00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/MyAppTheme_colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_table"
+        app:layout_constraintEnd_toStartOf="@+id/Player_TV_duration"
+        app:layout_constraintStart_toStartOf="@+id/SB_duration"
+        app:layout_constraintTop_toBottomOf="@+id/SB_duration" />
+
+    <TextView
+        android:id="@+id/Player_TV_duration"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+
+        android:autoSizeTextType="none"
+        android:gravity="center_vertical|right"
+        android:text="0:00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/MyAppTheme_colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Player_TV_current_position"
+        app:layout_constraintEnd_toEndOf="@+id/SB_duration"
+        app:layout_constraintStart_toEndOf="@+id/Player_TV_current_position"
+        app:layout_constraintTop_toTopOf="@+id/Player_TV_current_position" />
+
+
+    <TextView
+        android:id="@+id/Player_TV_time_shift_pos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:autoSizeTextType="none"
+        android:text="0:00"
+        android:textAlignment="center"
+        android:textColor="@color/MyAppTheme_colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/SB_duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_artist_layout" />
+
+
+    <!-- Buttons -->
+    <TableLayout
+        android:id="@+id/buttons_table"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/SB_volume">
+
+        <TableRow>
+
+            <ImageButton
+                android:id="@+id/player_btn_prev"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/MyAppTheme_colorPrimaryDark"
+                android:src="@drawable/ic_button_prev" />
+
+            <ImageButton
+                android:id="@+id/player_btn_pause_n_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/MyAppTheme_colorPrimaryDark"
+                android:src="@drawable/ic_button_play" />
+
+            <ImageButton
+                android:id="@+id/player_btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:backgroundTint="@color/MyAppTheme_colorPrimaryDark"
+                android:src="@drawable/ic_button_next" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:id="@+id/player_btn_repeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@color/MyAppTheme_colorPrimaryDark"
+                android:onClick="btn_repeat_onClick"
+                android:padding="5dp"
+                android:src="@drawable/ic_player_btn_repeat"
+                tools:layout_editor_absoluteX="450dp"
+                tools:layout_editor_absoluteY="340dp" />
+
+            <ImageButton
+                android:id="@+id/player_btn_shuffle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@color/MyAppTheme_colorPrimaryDark"
+                android:onClick="btn_shuffle_Onclick"
+                android:padding="5dp"
+
+                android:src="@drawable/ic_player_btn_shuffle"
+                tools:layout_editor_absoluteX="511dp"
+                tools:layout_editor_absoluteY="349dp" />
+
+            <ImageButton
+                android:id="@+id/player_btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:adjustViewBounds="false"
+                android:background="@color/MyAppTheme_colorPrimaryDark"
+
+                android:onClick="btn_edit_Onclick"
+                android:padding="5dp"
+                android:src="@drawable/ic_audioplayer_btn_more"
+
+                app:layout_constraintBottom_toBottomOf="@+id/player_btn_shuffle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/player_btn_shuffle"
+                app:layout_constraintTop_toBottomOf="@+id/player_btn_pause_n_play" />
+        </TableRow>
+    </TableLayout>
+
+
+    <!-- Volume -->
+    <SeekBar
+        android:id="@+id/SB_volume"
+
+        style="@android:style/Widget.Material.Light.SeekBar"
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+
+        android:thumb="@drawable/seekbar_thumb_style"
+        app:layout_constraintBottom_toTopOf="@+id/Player_TV_volume"
+        app:layout_constraintEnd_toEndOf="@+id/Player_TV_current_position"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttons_table" />
+
+    <TextView
+        android:id="@+id/Player_TV_volume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:autoSizeTextType="none"
+        android:gravity="center"
+        android:text="50%"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/SB_volume"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/SB_volume"
+        app:layout_constraintTop_toBottomOf="@+id/SB_volume" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

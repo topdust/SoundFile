@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="gen_audioplayer_volume_seekbar" type="id"/>
+    <item name="gen_audioplayer_volume_textview" type="id"/>
+
+    <item name="flicker_linear_layout" type="id"/>
+    <item name="flicker_main_text" type="id"/>
+    <item name="flicker_extra_text" type="id"/>
+</resources>

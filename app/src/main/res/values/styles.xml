@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--App theme using style of Action bar below -->
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/MyAppTheme_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/MyAppTheme_colorPrimaryDark</item>
+        <item name="colorAccent">@color/MyAppTheme_colorAccent</item>
+        <item name="android:toolbarStyle">@style/MyAppTheme.ActionBarStyle</item>
+        <item name="android:popupMenuStyle">@style/popupMenuStyle</item>
+        <item name="android:itemTextAppearance">@style/myCustomMenuTextAppearance</item>
+
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <!-- Style of Action bar using style of text below -->
+    <style name="MyAppTheme.ActionBarStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:titleTextStyle">@style/MyAppTheme.ActionBarStyle.TitleTextStyle</item>
+    </style>
+
+    <!-- Style of text -->
+    <style name="MyAppTheme.ActionBarStyle.TitleTextStyle">
+        <item name="android:textColor">@color/MyAppTheme_colorAccent</item>
+    </style>
+
+    <style name="popupMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@color/MyAppTheme_colorPrimary</item>
+    </style>
+
+    <style name="myCustomMenuTextAppearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@color/MyAppTheme_colorCardView_duration</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="Autocomplete" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="colorControlNormal">@color/MyAppTheme_colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/MyAppTheme_colorAccent</item>
+    </style>
+
+
+    <!-- Player popup menu search theme -->
+    <style name="PlayerSearchPopupMenuTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/MyAppTheme_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/MyAppTheme_colorPrimaryDark</item>
+        <item name="colorAccent">@color/MyAppTheme_colorAccent</item>
+
+        <item name="android:popupMenuStyle">@style/PlayerSearchPopupMenuStyle</item>
+        <item name="android:itemTextAppearance">@style/myCustomMenuTextAppearance</item>
+
+        <item name="android:dropDownVerticalOffset">20dp</item>
+        <item name="android:dropDownHorizontalOffset">20dp</item>
+    </style>
+
+
+    <style name="PlayerSearchPopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@color/MyAppTheme_colorPrimaryDark</item>
+    </style>
+
+    <style name="scrollbar_shape_style" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarThumbVertical">@color/MyAppTheme_colorAccent</item>
+        <item name="android:scrollbarTrackVertical">@color/MyAppTheme_colorPrimary50transparent</item>
+    </style>
+
+</resources>

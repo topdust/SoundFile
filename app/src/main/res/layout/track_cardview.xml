@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/playlist_item_back_color"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/audioplaylist_cardView_artist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="8dp"
+            android:autoSizeMaxTextSize="24sp"
+            android:autoSizeMinTextSize="14sp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="Artist"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+
+            android:textColor="@color/MyAppTheme_colorCardView_artist"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/audioplaylist_cardView_title"
+            app:layout_constraintEnd_toStartOf="@+id/playlist_cardView_more"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/audioplaylist_cardView_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="8dp"
+            android:layout_weight="4"
+            android:autoSizeMaxTextSize="24sp"
+            android:autoSizeMinTextSize="14sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
+            android:textColor="@color/MyAppTheme_colorCardView_title"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/audioplaylist_cardView_duration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/audioplaylist_cardView_artist" />
+
+        <TextView
+            android:id="@+id/audioplaylist_cardView_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="0:00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/MyAppTheme_colorCardView_duration"
+            android:textSize="14sp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/audioplaylist_cardView_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/audioplaylist_cardView_title"
+            app:layout_constraintTop_toBottomOf="@+id/playlist_cardView_more" />
+
+        <ImageButton
+            android:id="@+id/playlist_cardView_more"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:contextClickable="true"
+            app:layout_constraintBottom_toTopOf="@+id/audioplaylist_cardView_duration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/audioplaylist_cardView_artist"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_playlist_cardview_more" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

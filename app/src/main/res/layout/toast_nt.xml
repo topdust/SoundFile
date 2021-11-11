@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/toast_nt_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:padding="5dp"
+
+
+    android:background="@color/MyAppTheme_colorPrimary">
+
+    <TextView
+        android:id="@+id/toast_nt_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark"
+        android:gravity="center"
+
+
+        android:padding="5dp"
+        android:shadowColor="@color/MyAppTheme_colorPrimary"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:textColor="@color/MyAppTheme_colorAccent"
+        android:textSize="18sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Toast text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

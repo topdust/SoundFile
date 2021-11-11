@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawerLayout_XML"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+
+    android:padding="10dp"
+
+    android:background="@drawable/main_activity_background">
+
+
+    <TextView
+        android:id="@+id/main_activity_tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+
+        android:shadowColor="@color/MyAppTheme_colorAccent"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="3"
+
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/MyAppTheme_colorPrimary"
+
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/main_activity_tv_app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="5dp"
+
+        android:textSize="12dp"
+
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_tv_app_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_tv_app_name"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_app_name"
+        tools:text="App version" />
+
+
+    <TextView
+        android:id="@+id/main_activity_tv_player"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="32dp"
+
+        android:gravity="center_horizontal|center_vertical"
+
+        android:padding="5dp"
+        android:shadowColor="@color/MyAppTheme_colorPrimary"
+        android:shadowDx="2"
+
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/main_activity_btn_player_text"
+        android:textColor="@color/MyAppTheme_colorAccent"
+        android:textSize="18sp"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark50transparent"
+
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_player_btn"
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_player_btn"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_player_btn"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_app_version" />
+
+    <com.prplx.soundfile.Animated_ImageButton
+        android:id="@+id/main_activity_player_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:adjustViewBounds="true"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark50transparent"
+
+        android:contentDescription="@string/main_activity_btn_player_text"
+
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_main_menu_player"
+
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@+id/main_activity_playlist_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_player" />
+
+
+    <TextView
+        android:id="@+id/main_activity_tv_playlist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_horizontal|center_vertical"
+
+        android:padding="5dp"
+        android:shadowColor="@color/MyAppTheme_colorPrimary"
+        android:shadowDx="2"
+
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/main_activity_btn_playlists_text"
+        android:textColor="@color/MyAppTheme_colorAccent"
+        android:textSize="18sp"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark50transparent"
+
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_playlist_btn"
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_playlist_btn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_playlist_btn"
+        app:layout_constraintTop_toTopOf="@+id/main_activity_tv_player" />
+
+    <com.prplx.soundfile.Animated_ImageButton
+        android:id="@+id/main_activity_playlist_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+
+        android:adjustViewBounds="true"
+        android:background="@color/MyAppTheme_colorPrimaryDark50transparent"
+
+        android:contentDescription="@string/main_activity_btn_playlists_text"
+
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_main_menu_playlists"
+
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_activity_player_btn"
+        app:layout_constraintTop_toTopOf="@+id/main_activity_player_btn" />
+
+    <TextView
+        android:id="@+id/main_activity_tv_files"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark50transparent"
+        android:gravity="center_horizontal|center_vertical"
+
+        android:padding="5dp"
+        android:shadowColor="@color/MyAppTheme_colorPrimary"
+        android:shadowDx="2"
+        android:shadowDy="2"
+
+        android:shadowRadius="2"
+        android:text="@string/main_activity_btn_files_text"
+
+        android:textColor="@color/MyAppTheme_colorAccent"
+
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_files_btn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_files_btn"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_player_btn" />
+
+    <com.prplx.soundfile.Animated_ImageButton
+        android:id="@+id/main_activity_files_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:adjustViewBounds="true"
+
+        android:background="@color/MyAppTheme_colorPrimaryDark50transparent"
+        android:contentDescription="@string/main_activity_btn_playlists_text"
+
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_main_menu_files"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@+id/main_activity_player_btn"
+        app:layout_constraintStart_toStartOf="@+id/main_activity_player_btn"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_tv_files" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

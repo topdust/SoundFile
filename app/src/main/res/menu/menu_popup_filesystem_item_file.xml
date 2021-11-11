@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/popup_menu_filesystem_item_action_rename"
+        android:title="@string/menu_popup_filesystem_item_action_rename"
+        android:menuCategory="system" />
+
+    <item android:id="@+id/popup_menu_filesystem_item_action_delete"
+        android:title="@string/menu_popup_filesystem_item_action_delete"
+        android:menuCategory="system" />
+</menu>

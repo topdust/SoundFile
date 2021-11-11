@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="all">
+
+        <item android:id="@+id/audiolist_search_option_by_all"
+            android:title="@string/audiolist_search_menu_by_all"
+            android:orderInCategory="0"/>
+
+        <item android:id="@+id/audiolist_search_option_by_artist"
+            android:title="@string/audiolist_search_menu_by_artist" />
+
+        <item android:id="@+id/audiolist_search_option_by_title"
+            android:title="@string/audiolist_search_menu_by_title" />
+
+        <item android:id="@+id/audiolist_search_option_by_album"
+            android:title="@string/audiolist_search_menu_by_album" />
+    </group>
+</menu>

@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">SoundFile</string>
+
+    <string name="main_activity_tv_app_version">Version</string>
+
+    <string name="main_activity_btn_player_text">Player</string>
+    <string name="main_activity_btn_playlists_text">Playlists</string>
+    <string name="main_activity_btn_files_text">Files</string>
+
+    <string name="search_toolbar_title">Search</string>
+
+    <string name="nav_player">Player</string>
+    <string name="nav_list">List</string>
+    <string name="nav_playlists">Playlists</string>
+
+    <string name="nav_openNavDrawer">Open navigation drawer</string>
+    <string name="nav_closeNavDrawer">Close navigation drawer</string>
+
+    <string name="edit_audiofile_saved_text">Saved</string>
+    <string name="edit_audiofile_not_saved_text">Error: Can\'t save file\'s metadata</string>
+
+    <string name="btn_save">save</string>
+
+    <string name="Artist">Artist</string>
+    <string name="Title">Title</string>
+    <string name="Album">Album</string>
+
+    <string name="player_activity_toast_shuffled">Tracks shuffled</string>
+    <string name="player_activity_toast_looping">Looping current track</string>
+
+    <string name="audiolist_search_menu_by_all">By all</string>
+    <string name="audiolist_search_menu_by_artist">By artist</string>
+    <string name="audiolist_search_menu_by_title">By title</string>
+    <string name="audiolist_search_menu_by_album">By album</string>
+
+    <string name="playlist_size">Playlist size:</string>
+
+    <string name="menu_popup_filesystem_item_action_rename">Rename</string>
+    <string name="menu_popup_filesystem_item_action_delete">Delete</string>
+    
+    <string name="playlists_action_add_playlist">Add playlist</string>
+
+    <string name="create_playlist_playlist_name_hint">Input playlist name</string>
+    <string name="create_playlist_playlist_title">Create playlist</string>
+</resources>
