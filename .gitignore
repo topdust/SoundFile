@@ -13,6 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-
 app/release/output-metadata.json
-!app/release/*.apk
