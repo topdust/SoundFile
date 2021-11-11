@@ -14,5 +14,5 @@
 .cxx
 local.properties
 
-app/release
+app/release/output-metadata.json
 !app/release/*.apk
