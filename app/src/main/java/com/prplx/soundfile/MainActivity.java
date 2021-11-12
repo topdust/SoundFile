@@ -1,8 +1,5 @@
 package com.prplx.soundfile;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.NotificationChannel;
@@ -21,11 +18,6 @@ import android.graphics.Point;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.collection.LruCache;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -36,17 +28,20 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.LruCache;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -58,8 +53,8 @@ public class MainActivity extends AppCompatActivity
     private final int NOTIFICATION_ID = 1;
     private final String MAIN_CHANNEL_ID = "1";
 
-    private float BTN_PRESS_SCALE = Animated_ImageButton.BTN_PRESS_SCALE;
-    private float BTN_RELEASE_SCALE = Animated_ImageButton.BTN_RELEASE_SCALE;
+    private final float BTN_PRESS_SCALE = Animated_ImageButton.BTN_PRESS_SCALE;
+    private final float BTN_RELEASE_SCALE = Animated_ImageButton.BTN_RELEASE_SCALE;
 
     public static ArrayList<AudioFile> list_AudioFile;
 
@@ -73,7 +68,7 @@ public class MainActivity extends AppCompatActivity
     public int audio_player_volume = 100;
 
     //if creating player activity for the first time this var is true
-    private boolean init_player = true;
+    private final boolean init_player = true;
 
     private Animated_ImageButton btn_player;
     private Animated_ImageButton btn_playlists;
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity
 
     private TextView tv_app_version;
 
-    private MainActivity this_activity = this;
+    private final MainActivity this_activity = this;
 
     private ServiceConnection service_connection;
 
@@ -109,7 +104,7 @@ public class MainActivity extends AppCompatActivity
 
         Init_Views();
 
-        if(is_service_bounded == false)
+        if(!is_service_bounded)
         {
             //check permission for reading user's data
             if(ContextCompat.checkSelfPermission(this, READ_PERMISSION_STRING) != PackageManager.PERMISSION_GRANTED)
@@ -386,12 +381,16 @@ public class MainActivity extends AppCompatActivity
 
 
     /**
-     *
-     * @param context
-     * @param albumId
-     * @return
+     * Gets album art from cache if possible or returns newly loaded album art.
+     * If the album art can't be loaded - returns null.
+     * If the album art dimension wider than device screen dimensions -
+     *  scales album art to the screen dimensions, preserving aspect ratio.
+     * If album art is not in the cache - adds to the cache.
+     * @param context - application context
+     * @param albumId of album art to retrieve
+     * @return Bitmap album art or null
      */
-    static @Nullable Bitmap getAlbumArt(@NonNull Context context, @NonNull long albumId)
+    static @Nullable Bitmap getAlbumArt(@NonNull Context context, long albumId)
     {
 
         Bitmap album_image = MainActivity.Get_AlbumArt_From_Cache(albumId); //return cached album art if possible
@@ -472,14 +471,14 @@ public class MainActivity extends AppCompatActivity
         // int in its constructor.
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         Log.v("my_verbose", "Max memory for current app: "
-                + String.valueOf(maxMemory) + " Kb");
+                + maxMemory + " Kb");
 
         // Use 1/6th of the available memory for this memory cache.
         final int cache_sz = maxMemory / 6;
 
         MainActivity.album_images_cache = new LruCache<Long, Bitmap>(cache_sz)
         {
-            protected int sizeOf(Long key, Bitmap bitmap)
+            protected int sizeOf(Long key, @NonNull Bitmap bitmap)
             {
                 // The cache size will be measured in kilobytes rather than
                 // number of items.
