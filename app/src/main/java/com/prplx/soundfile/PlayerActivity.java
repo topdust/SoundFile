@@ -1,9 +1,5 @@
 package com.prplx.soundfile;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -29,11 +25,17 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 
@@ -42,8 +44,8 @@ public class PlayerActivity extends AppCompatActivity
     //request code of startActivityForResult() for Edit_audiofile activity
     private static final int Edit_audio_REQUEST_CODE = 1;
 
-    private float BTN_PRESS_SCALE = Animated_ImageButton.BTN_PRESS_SCALE;
-    private float BTN_RELEASE_SCALE = Animated_ImageButton.BTN_RELEASE_SCALE;
+    private final float BTN_PRESS_SCALE = Animated_ImageButton.BTN_PRESS_SCALE;
+    private final float BTN_RELEASE_SCALE = Animated_ImageButton.BTN_RELEASE_SCALE;
 
     public static final String ACTION_FINISH_MAIN_ACTIVITY = "a_f_m_a";
 
@@ -393,7 +395,7 @@ public class PlayerActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
 
         //reload UI if audio file has been edited in Edit_audiofile
-        if(requestCode == this.Edit_audio_REQUEST_CODE)
+        if(requestCode == Edit_audio_REQUEST_CODE)
         {
             SetPlayerUI(this.playerService.current_index_in_list);
         }
@@ -558,8 +560,6 @@ public class PlayerActivity extends AppCompatActivity
             playerActivity.SetPlayerUI(playerActivity.playerService.current_index_in_list);
         });
 
-
-
         Btn_next = findViewById(R.id.player_btn_next);
         Btn_next.setOnClickListener(v ->
         {
@@ -568,47 +568,6 @@ public class PlayerActivity extends AppCompatActivity
             int index_of_audio = playerActivity.playerService.Skip_To_Next();
             playerActivity.SetPlayerUI(index_of_audio);
         });
-
-
-
-       /* Btn_edit = findViewById(R.id.player_btn_edit);
-        Btn_edit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                PlayerActivity playerActivity = (PlayerActivity)v.getContext();
-
-                Intent intent_edit_audio = new Intent(playerActivity, Edit_audiofile.class);
-
-                String uri = playerActivity.list_AudioFile.get(playerActivity.playerService.current_index_in_list).absolute_path;
-                long id = playerActivity.list_AudioFile.get(playerActivity.playerService.current_index_in_list).id;
-                String artist = playerActivity.list_AudioFile.get(playerActivity.playerService.current_index_in_list).artist;
-                String title = playerActivity.list_AudioFile.get(playerActivity.playerService.current_index_in_list).title;
-                String album = playerActivity.list_AudioFile.get(playerActivity.playerService.current_index_in_list).album;
-                int current_index_in_list = playerActivity.playerService.current_index_in_list;
-
-                intent_edit_audio.putExtra(Edit_audiofile.URI_EXTRA, uri);
-                intent_edit_audio.putExtra(Edit_audiofile.ID_EXTRA, id);
-                intent_edit_audio.putExtra(Edit_audiofile.ARTIST_EXTRA, artist);
-                intent_edit_audio.putExtra(Edit_audiofile.TITLE_EXTRA, title);
-                intent_edit_audio.putExtra(Edit_audiofile.ALBUM_EXTRA, album);
-                intent_edit_audio.putExtra(Edit_audiofile.INDEX_EXTRA, current_index_in_list);
-
-                //mark this intent as intent from Player activity
-                intent_edit_audio.putExtra(Edit_audiofile.FROM_PLAYER_EXTRA, true);
-
-                try
-                {
-                    startActivityForResult(intent_edit_audio, PlayerActivity.Edit_audio_REQUEST_CODE);
-                }
-                catch (ActivityNotFoundException ex)
-                {
-                    PrintError(ex);
-                }
-            }
-        });*/
-
 
         Btn_repeat = findViewById(R.id.player_btn_repeat);
         Btn_repeat.setOnClickListener( v ->
@@ -638,14 +597,7 @@ public class PlayerActivity extends AppCompatActivity
         {
             PlayerActivity playerActivity = (PlayerActivity)v.getContext();
             ImageButton this_view = (ImageButton) v;
-            if(playerActivity.playerService.is_shuffled)
-            {
-                playerActivity.playerService.Shuffle(false);
-            }
-            else
-            {
-                playerActivity.playerService.Shuffle(true);
-            }
+            playerActivity.playerService.Shuffle(!playerActivity.playerService.is_shuffled);
 
             //shuffle button
             if(playerActivity.playerService.is_shuffled)
@@ -790,8 +742,6 @@ public class PlayerActivity extends AppCompatActivity
         //init incoming call handler
         register_callStateListener();
 
-
-
         SB_duration = findViewById(R.id.SB_duration);
         SB_duration.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
@@ -894,41 +844,32 @@ public class PlayerActivity extends AppCompatActivity
 
         //repeat button
         //highlight button
-        if(this.playerService.is_looping)
-        {
+        if (this.playerService.is_looping) {
             Btn_repeat.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_player_btn_repeat_activ));
             Btn_repeat.setScaleX(BTN_PRESS_SCALE);
             Btn_repeat.setScaleY(BTN_PRESS_SCALE);
-        }
-        else //stop highlighting
-        {
+        } else { //stop highlighting
             Btn_repeat.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_player_btn_repeat));
             Btn_repeat.setScaleX(BTN_RELEASE_SCALE);
             Btn_repeat.setScaleY(BTN_RELEASE_SCALE);
         }
 
 
-        this.additional_thread_future = this.additional_threads.submit(() ->
-        {
+        this.additional_thread_future = this.additional_threads.submit(() -> {
             Bitmap album_art = MainActivity.getAlbumArt(PlayerActivity.this,
                                                                 current_audio.album_id);
 
-            if(album_art != null)
-            {
+            if (album_art != null) {
                 PlayerActivity.this.current_album_art_image = new BitmapDrawable(getResources(), album_art);
 
-                PlayerActivity.this.runOnUiThread(() ->
-                {
+                PlayerActivity.this.runOnUiThread(() -> {
                     PlayerActivity.this.IV_album_image
                             .setImageDrawable(PlayerActivity.this.current_album_art_image);
                 });
-            }
-            else
-            {
+            } else {
                 PlayerActivity.this.current_album_art_image = PlayerActivity.this.default_album_art_image;
 
-                PlayerActivity.this.runOnUiThread(() ->
-                {
+                PlayerActivity.this.runOnUiThread(() -> {
                     PlayerActivity.this.IV_album_image
                             .setImageDrawable(PlayerActivity.this.default_album_art_image);
                 });
@@ -936,10 +877,7 @@ public class PlayerActivity extends AppCompatActivity
         });
     }
 
-
-
-    private void register_BecomingNoisyReceiver()
-    {
+    private void register_BecomingNoisyReceiver() {
         //register after getting audio focus
         IntentFilter intentFilter = new IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
         registerReceiver(this.becomingNoisyReceiver, intentFilter);

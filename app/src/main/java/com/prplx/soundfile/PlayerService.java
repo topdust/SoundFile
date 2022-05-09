@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -37,12 +36,11 @@ import androidx.media.session.MediaButtonReceiver;
 
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.time.Instant;
 
 
 public class PlayerService extends IntentService
@@ -58,12 +56,12 @@ public class PlayerService extends IntentService
 
     public final static String ACTION_MEDIAPLAYER_STATE_CHANGED = "ACTION_MEDIAPLAYER_STATE_CHANGED";
 
-    private static String PLAYER_SP_FILE_NAME = "SP_player";
-    private static String PLAYER_SP_VOLUME = "volume";
-    private static String PLAYER_SP_TRACK_ID = "id";
-    private static String PLAYER_SP_TRACK_POSITION = "position";
-    private static String PLAYER_SP_IS_SHUFFLED = "is_shuffled";
-    private static String PLAYER_SP_IS_LOOPING = "is_looping";
+    private static final String PLAYER_SP_FILE_NAME = "SP_player";
+    private static final String PLAYER_SP_VOLUME = "volume";
+    private static final String PLAYER_SP_TRACK_ID = "id";
+    private static final String PLAYER_SP_TRACK_POSITION = "position";
+    private static final String PLAYER_SP_IS_SHUFFLED = "is_shuffled";
+    private static final String PLAYER_SP_IS_LOOPING = "is_looping";
 
     private final String CHANNEL_ID = "273";
 
@@ -131,8 +129,9 @@ public class PlayerService extends IntentService
     private Bitmap current_large_icon = null;
 
     private long prev_notification_update_time_ms = -1;
-    private long NOTIFICATION_UPDATE_MIN_TIME_MS = 200;
+    private final long NOTIFICATION_UPDATE_MIN_TIME_MS = 200;
 
+    private float cur_volume_ = 0.75f;
 
     @Override
     public void onCreate()
@@ -571,25 +570,21 @@ public class PlayerService extends IntentService
         });
 
 
-        this.audioFocusChangeListener = focusChange ->
-        {
-            switch (focusChange)
-            {
-                case AudioManager.AUDIOFOCUS_GAIN:
-                {
-                    if(this.resume_play == true)
-                    {
-                        PlayerService.this.Play();
+        this.audioFocusChangeListener = focusChange -> {
+
+            switch (focusChange) {
+                case AudioManager.AUDIOFOCUS_GAIN: {
+                    if (this.resume_play == true) {
+                        Play();
                     }
                     break;
                 }
-
                 case AudioManager.AUDIOFOCUS_LOSS:
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-                {
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT: {
                     this.resume_play = mediaPlayer.isPlaying();
-                    PlayerService.this.Pause();
+                    Pause();
+                }
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK: {
                 }
             }
         };
@@ -868,33 +863,30 @@ public class PlayerService extends IntentService
         return sharedPreferences.getLong(PlayerService.PLAYER_SP_TRACK_ID, -1);
     }
 
-
+    public float GetVolume() {
+        return cur_volume_;
+    }
 
     /**
      *
      * Sets volume of media player
-     * @param value Media player volume level to be set
+     * @param value Media player volume level to be set. Range from 0 to 1.
+     * @return previous volume
      */
-    public float SetVolume(int value)
-    {
-        float volume;
+    public float SetVolume(float value) {
+        float prev_volume;
 
-        if(value <= 0)
-        {
-            volume = 0.0f;
-        }
-        else if(value >= 100)
-        {
-            volume = 1.0f;
-        }
-        else
-        {
-            volume = value/100.0f;
+        if (value <= 0) {
+            value = 0.0f;
+        } else if(value >= 1.0f) {
+            value = 1.0f;
         }
 
-        this.mediaPlayer.setVolume(volume, volume);
+        prev_volume = cur_volume_;
+        cur_volume_ = value;
+        this.mediaPlayer.setVolume(value, value);
 
-        return volume;
+        return prev_volume;
     }
 
 
@@ -1052,7 +1044,6 @@ public class PlayerService extends IntentService
 
                 if(keyEvent != null)
                 {
-                    //check action
                     switch (keyEvent.getAction())
                     {
                         case KeyEvent.ACTION_DOWN:
